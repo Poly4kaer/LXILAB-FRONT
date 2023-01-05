@@ -1,34 +1,39 @@
 <template>
   <div class="">
-    <input @input="input" type="text" :id="name" :value="value"/>
+    <input
+      @input="input"
+      type="text"
+      :id="name"
+      :value="value"
+    />
     <label :for="name"> {{ label }} {{ value }}</label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BaseInput",
+  name: 'BaseInput',
 
   props: {
     label: {
       type: String,
-      default: '',
+      default: ''
     },
     value: {
       type: String,
-      default: 'lord',
+      default: ' '
     },
     name: {
       type: String,
-      default: '',
-    },
-  },
-  methods: {
-    input ($event) {
-      this.$emit('input-data', $event.target.value)
+      default: ''
     }
   },
-};
+  methods: {
+    input($event) {
+      this.$emit('input', $event.target.value)
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,36 +1,36 @@
 <template>
   <div class="">
-      <h3 class="header">For tests</h3>
-      <BaseInput  v-model="dataId"/>
-      {{ dataId }}
+    <h3 class="header">For tests</h3>
+    <BaseInput v-model="dataId" />
+    {{ dataId }}
     <div>
-      <BaseButton text="Отправить" @toclick="submitForm"/>
+      <BaseButton
+        text="Отправить"
+        @toclick="submitForm"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from '@/components/ui/BaseButton.vue';
-import BaseInput from '@/components/ui/BaseInput.vue';
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseInput from '@/components/ui/BaseInput.vue'
 
 export default {
   name: 'FormForTest',
-  props: {
-    
-    },
+  props: {},
   components: {
     BaseButton,
-    BaseInput,
+    BaseInput
   },
-  data () {
+  data() {
     return {
       dataId: ''
     }
   },
   methods: {
     submitForm() {
-    console.log(this.dataId);
-      
+      console.log(this.dataId)
     }
   }
 }
@@ -38,7 +38,7 @@ export default {
 
 <style>
 .header {
-font-weight: bold;
-color: red;
+  font-weight: bold;
+  color: red;
 }
 </style>
