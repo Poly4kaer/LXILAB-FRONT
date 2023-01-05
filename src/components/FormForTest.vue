@@ -39,6 +39,6 @@ export default {
 <style>
 .header {
 font-weight: bold;
-color: brown;
+color: red;
 }
 </style>
