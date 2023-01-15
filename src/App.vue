@@ -10,6 +10,8 @@
       </div>
       <br>
 <FormForTest/>
+<div><TabsGraph v-for="tab in dataIP" :key="tab" :text="tab"/> </div>
+
       <!-- @ v-on, input здесь это событие -->
   </div>
 </template>
@@ -18,6 +20,7 @@
 import BaseButton from './components/ui/BaseButton.vue'
 import ModalWindow from './components/ModalWindow.vue'
 import FormForTest from './components/FormForTest.vue';
+import TabsGraph from './components/TabsGraph.vue'
 // оно не обязательно назывется как имя в экспорте!!
 
   import axios from 'axios'
@@ -25,10 +28,10 @@ import FormForTest from './components/FormForTest.vue';
 export default {
   name: 'App',
   components: {
-    // not use HelloWorld
     BaseButton,
     ModalWindow,
-    FormForTest
+    FormForTest,
+    TabsGraph
   },
   data () {
     return {
@@ -77,9 +80,7 @@ methods: {
   color: #2c3e50;
   margin-top: 60px;
 }
-div {
 
-}
 .attention {
   text-align: center;
   color: black;
