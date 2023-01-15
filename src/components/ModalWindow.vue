@@ -16,27 +16,27 @@
 
 <script>
 // import BaseButton from "./components/ui/BaseButton.vue";
-import BaseCheckbox from "@/components/ui/BaseInput.vue";
+import BaseCheckbox from '@/components/ui/BaseInput.vue'
 
 // import axios from "axios";
 //компонент Vue, он является объектом со свойствами, чтобы обратиться к его свойствам через this
 export default {
-  name: "ModalWindow",
+  name: 'ModalWindow',
   components: {
     // BaseButton,
-    BaseCheckbox,
+    BaseCheckbox
   },
   data() {
     return {
       value: [],
-      numberChannel: [1, 2, 3, 4],
-    };
+      numberChannel: [1, 2, 3, 4]
+    }
   },
   mounted() {},
   methods: {
     choiceChannel(value) {
-      console.log(value);
-    },
-  },
-};
+      console.log(value)
+    }
+  }
+}
 </script>

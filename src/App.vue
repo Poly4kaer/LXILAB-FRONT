@@ -1,30 +1,46 @@
 <template>
-  <div>
-<BaseButton v-for="ip in dataIP" :key="ip" :text="ip" @toclick="openModal"/>
-<!-- :text это props (v-bind)-->
+  <div class="wrapper">
+    <BaseButton
+      v-for="ip in dataIP"
+      :key="ip"
+      :text="ip"
+      @toclick="openModal"
+    />
+    <!-- :text это props (v-bind)-->
     <!-- <modal v-show="isModalVisible" @close="closeModal" /> -->
     <div v-if="isModalOpen">
-      <ModalWindow/>
+      <ModalWindow />
       {{ channel }}
-        <!-- это интерполяция  -->
-      </div>
-      <br>
-<FormForTest/>
-<div><TabsGraph v-for="tab in dataIP" :key="tab" :text="tab"/> </div>
+      <!-- это интерполяция  -->
+    </div>
+    <br />
+    <FormForTest />
+    <div>
+      <ul>
+        <li
+          v-for="tab in dataIP"
+          :key="tab"
+          @click="setActiveTab(tab)"
+        >
+          <span> {{ tab }} </span>
+        </li>
+      </ul>
+      <TabsGraph :ip="activeTab" />
+    </div>
 
-      <!-- @ v-on, input здесь это событие -->
+    <!-- @ v-on, input здесь это событие -->
   </div>
 </template>
 
 <script>
 import BaseButton from './components/ui/BaseButton.vue'
 import ModalWindow from './components/ModalWindow.vue'
-import FormForTest from './components/FormForTest.vue';
+import FormForTest from './components/FormForTest.vue'
 import TabsGraph from './components/TabsGraph.vue'
 // оно не обязательно назывется как имя в экспорте!!
 
-  import axios from 'axios'
-//компонент Vue, он является объектом со свойствами, чтобы обратиться к его свойствам через this 
+import axios from 'axios'
+//компонент Vue, он является объектом со свойствами, чтобы обратиться к его свойствам через this
 export default {
   name: 'App',
   components: {
@@ -33,42 +49,41 @@ export default {
     FormForTest,
     TabsGraph
   },
-  data () {
+  data() {
     return {
-      question: [], 
-      dataIP: [
-        '192.168.88.50',
-        '192.168.88.51',
-        '192.168.88.52'
-      ],
+      question: [],
+      dataIP: ['192.168.88.50', '192.168.88.51', '192.168.88.52'],
       isModalOpen: false,
+      activeTab: null
       // numberChannel: [
       //   1,
       //   2,
       //   3,
       //   4
-      // ] 
+      // ]
     }
   },
-mounted() {
-  this.getQuestion()
-},
-methods: {
-  async getQuestion () {
-    try {
-      const { data } = await axios.get('https://jservice.io/api/random'); //синтаксис деструктуризации
-      console.log(this.question);
-      this.question = data;
-    } catch (error) {
-      console.error(error);
-    }
+  mounted() {
+    this.getQuestion()
   },
-  openModal () {
-    this.isModalOpen = !this.isModalOpen //toggle
+  methods: {
+    async getQuestion() {
+      try {
+        const { data } = await axios.get('https://jservice.io/api/random') //синтаксис деструктуризации
+        console.log(this.question)
+        this.question = data
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    openModal() {
+      this.isModalOpen = !this.isModalOpen //toggle
+    },
+    setActiveTab(tab) {
+      this.activeTab = tab
+    }
   }
 }
-}
-
 </script>
 
 <style lang="scss">
@@ -79,6 +94,10 @@ methods: {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 1000px;
 }
 
 .attention {
@@ -97,6 +116,5 @@ methods: {
 }
 .list {
   list-style-type: none;
-
 }
 </style>
