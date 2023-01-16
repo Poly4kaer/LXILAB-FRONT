@@ -25,7 +25,6 @@ export default {
 <style scoped lang="scss">
 .button__button {
   padding: 5px 25px;
-  margin: 0 15px 15px 0;
   background-color: rgb(189, 213, 184);
   border-radius: 7px;
   cursor: pointer;

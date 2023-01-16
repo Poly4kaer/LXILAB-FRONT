@@ -1,15 +1,12 @@
 <template>
-  <div class="contentForTest">
-    <h3 class="header">For tests</h3>
+  <div class="test">
+    <h3 class="test__header">For tests</h3>
     <BaseInput v-model="dataId" />
-    {{ dataId }}
-    <div>
-      <BaseButton
-        text="Отправить"
-        @toclick="submitForm"
-        class="buttonForTest"
-      />
-    </div>
+    <BaseButton
+      text="Отправить"
+      class="test__button"
+      @toclick="submitForm"
+    />
   </div>
 </template>
 
@@ -19,11 +16,11 @@ import BaseInput from '@/components/ui/BaseInput.vue'
 
 export default {
   name: 'FormForTest',
-  props: {},
   components: {
     BaseButton,
     BaseInput
   },
+  props: {},
   data() {
     return {
       dataId: ''
@@ -37,23 +34,23 @@ export default {
 }
 </script>
 
-<style>
-.header {
-  font-weight: bold;
-  color: rgb(3, 77, 9);
-  text-align: center;
-}
-.contentForTest {
+<style lang="scss">
+.test {
   border: solid rgb(1, 41, 7);
-  margin: 20px;
   padding: 20px;
-  padding-top: 10px;
-  display: inline-block;
-}
-.buttonForTest {
-  display: flex;
-  justify-content: center;
-}
-.inputInFormForTest {
+  display: grid;
+  gap: 15px;
+
+  &__header {
+    font-weight: bold;
+    color: rgb(3, 77, 9);
+    text-align: center;
+    margin: 0;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>
