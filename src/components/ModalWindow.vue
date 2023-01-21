@@ -1,5 +1,10 @@
 <template>
   <div class="modal">
+    <span
+      class="modal__close"
+      @click="$emit('close')"
+      >✖</span
+    >
     <h5 class="modal__header">Choose channels</h5>
     <label
       v-for="channel in numberChannel"
@@ -24,15 +29,12 @@
 
 <script>
 import BaseButton from '@/components/ui/BaseButton.vue'
-// import BaseCheckbox from '@/components/ui/BaseInput.vue'
 
-// import axios from "axios";
 //компонент Vue, он является объектом со свойствами, чтобы обратиться к его свойствам через this
 export default {
   name: 'ModalWindow',
   components: {
     BaseButton
-    // BaseCheckbox
   },
   data() {
     return {
@@ -53,7 +55,7 @@ export default {
 <style lang="scss">
 .modal {
   background: #dcdcdc;
-  padding: 15px;
+  padding: 5px 15px 15px 15px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgb(81, 86, 78);
   display: grid;
@@ -61,6 +63,11 @@ export default {
 
   &__header {
     margin: 0;
+  }
+
+  &__close {
+    justify-self: end;
+    cursor: pointer;
   }
 }
 </style>

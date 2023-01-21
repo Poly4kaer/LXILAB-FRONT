@@ -2,6 +2,7 @@
   <div class="button">
     <button
       class="button__button"
+      :class="{ active: isActive }"
       @click="$emit('toclick')"
     >
       {{ text }}
@@ -16,6 +17,10 @@ export default {
     text: {
       type: String,
       default: ''
+    },
+    isActive: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -36,5 +41,8 @@ export default {
   background-color: rgb(127, 175, 104);
   border-radius: 7px;
   box-shadow: none;
+}
+.active {
+  box-shadow: 0 4px 6px rgb(127, 175, 104);
 }
 </style>
